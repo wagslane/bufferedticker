@@ -15,7 +15,7 @@ for _ := range ticker.C {
 }
 ```
 
-In this scenario, you'll make exactly 100 requests per hour. However, what if you are making requests on behalf of clients? The requests don't come in to your system in a uniform manner, but you still can't make more than 100 per hour to the API you depend on. In this scenario, if you use a normal ticker and all the requests come in the last half of the hour, you'll only make 50 requests for the hour! That wastes half your budget!
+In this scenario, you'll make exactly 100 requests per hour. However, what if you are making requests on behalf of your users clicking around your app? The requests don't come into your system in a uniform manner, but you still can't make more than 100 per hour to the API you depend on. In this scenario, if you use a normal ticker and all the requests come in the last half of the hour, you'll only make 50 requests for the hour! That wastes half your budget!
 
 The buffered ticker is a very thin wrapper around a normal ticker that lets you "save" the ticks for a rainy day. In the scenario described above, you could do the following:
 
